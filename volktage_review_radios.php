@@ -56,23 +56,23 @@ else if(isset($_POST['edit'])){
 
 //============ Create a new order ==============
 else{ 
-require_once 'volktage_get_session_vars.php';
+    require_once 'volktage_get_session_vars.php';
 
-assign_session_components();
-$components = $_SESSION['components'];
+    assign_session_components();
+    $components = $_SESSION['components'];
 
-new_user_if_needed($username, $user_id, $identifier, $db_handle);
+    new_user_if_needed($username, $user_id, $identifier, $db_handle);
 
-# Add New Order to Order Table
-$order_id = add_new_order_record($user_id, $db_handle);
-$_SESSION['order_id'] = $order_id;
-$_SESSION['order_name'] = $order_id;
+    # Add New Order to Order Table
+    $order_id = add_new_order_record($user_id, $db_handle);
+    $_SESSION['order_id'] = $order_id;
+    $_SESSION['order_name'] = $order_id;
 
-# Create Table to House New Order
-create_order_table ($order_id, $db_handle);
+    # Create Table to House New Order
+    create_order_table ($order_id, $db_handle);
       
-# Populate Order Table with Selections
-populate_order_table ($order_id, $db_handle, $master_list);
+    # Populate Order Table with Selections
+    populate_order_table ($order_id, $db_handle, $master_list);
 }
 
 //========= Section 2: Use values assigned in Section 1 as function arguments to display appropriate info ========
