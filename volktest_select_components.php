@@ -1,4 +1,7 @@
 <?php
+# volktest_select_components.php
+# Starting point for all site interaction
+# This is where components are selected for new orders
 
 session_start();
 require 'volktage_db_connect.php';
@@ -6,7 +9,7 @@ require 'volktage_functions.php';
 
 //======= Delete Previous Order if Indicated =========
 # To improve: Using $_POST data like this probably violates REST principles.
-# Should find a better way to delete orders.
+# Find a better way to delete orders?
 if(isset($_POST['delete'])) {
     $order_id = $_SESSION['order_id'];
     delete_order ($order_id, $db_handle);
