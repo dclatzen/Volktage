@@ -1,4 +1,5 @@
 <?php
+// All functions required for the Volktage project are called from this file.
 
 //============== CREATE NEW USER AND/OR NEW ORDER ======================
 
