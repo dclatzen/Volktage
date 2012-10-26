@@ -1,4 +1,6 @@
 <?php
+# volktage_sign_in_landing.php
+# Basic landing to acquire session id info
 
 session_start();
 require 'volktage_get_session_vars.php';
