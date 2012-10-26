@@ -1,7 +1,7 @@
 <?php
-#volktage_sing_out_landing.php
+# volktage_sign_out_landing.php
+# Landing page placeholder to destroy session. 
 
-session_start();
 session_destroy();
 echo "You have successfully signed out.<br>";
 
