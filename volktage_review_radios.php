@@ -80,15 +80,18 @@ populate_order_table ($order_id, $db_handle, $master_list);
 //==================== Display Existing Orders ===================
 
 create_new();
-delete_order_option($_SESSION['order_name']);
-display_existing_builds($user_id, $db_handle);
-echo "Session Order Name: <h3>'" . $_SESSION['order_name']. "'</h3><br>";
 
+delete_order_option($_SESSION['order_name']);
+
+display_existing_builds($user_id, $db_handle);
+
+echo "Session Order Name: <h3>'" . $_SESSION['order_name']. "'</h3><br>";
 $_SESSION['order_id'] = $order_id;
 echo "Session Order ID: " . $_SESSION['order_id'] . "<br><br>";
 
 name_this_build();
 
+# Dynamically generate radios for the form
 echo '<form action="volktage_review_order.php" method = "post">';
 
 generate_radios($db_handle, $master_list, $order_id);
