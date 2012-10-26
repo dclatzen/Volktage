@@ -1,6 +1,6 @@
 <?php
-//volktage_print_session.php
-//gets info from volktest_select_components.php
+# volktage_print_session.php
+# gets info from volktest_select_components.php
 
 session_start();   
 
