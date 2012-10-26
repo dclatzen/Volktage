@@ -16,6 +16,8 @@ echo "User id: " . $user_id . "<br>";
 
 $order_id = '';
 
+//======== Section 1: Assign Variable values to be used as function arguments =========
+
 //============Rename if indicated=============
 
 if(isset($_POST['new_name'])) {
@@ -72,6 +74,8 @@ create_order_table ($order_id, $db_handle);
 # Populate Order Table with Selections
 populate_order_table ($order_id, $db_handle, $master_list);
 }
+
+//========= Section 2: Use values assigned in Section 1 as function arguments to display appropriate info ========
 
 //==================== Display Existing Orders ===================
 
