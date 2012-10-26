@@ -3,7 +3,8 @@ by Devon Latzen
 
 This project is in progress.
 
-The company 'Volktage' wants users to create custom computers through their site.
+Volktage is in the business of building custom computers.
+They want users to completely customize and order products through their site.
 Users may select every component, down to the number of fans on the case.
 
 The code deposited here is a mock order storage and retrieval system,
