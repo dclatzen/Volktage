@@ -104,7 +104,7 @@ function populate_order_table ($order_id, $db_handle, $master_list) {
     }
     //Confirm records have been added/changed.
             echo "Order records successfully stored." . "<br><br>";
-    }
+}
 
 function assign_session_components() {
     
@@ -199,9 +199,9 @@ function generate_radios($db_handle, $master_list, $order_id) {
         }else{
             echo '<input type="radio" name ="'.$component_type.'" value="'.$component_name.'" />'
             . $component_name . "<br><br>";
-            }
         }
     }
+}
 
 function generate_blank_radios($db_handle, $master_list) {
 
@@ -253,7 +253,7 @@ function print_session($db_handle){
     echo '<a href="#" onClick="history.back(); return false;">
           <input type="button" value="Edit">
           </a>';
-    }
+}
 
 function print_order($order_name, $order_id, $db_handle) {
 
@@ -286,6 +286,7 @@ function delete_order_option($order_name) {
 
 function delete_order ($order_id, $db_handle) {
     
+    # Delete the order record
     $SEL = "DELETE
             FROM volktageorders
             WHERE orderID = '$order_id'";
@@ -295,7 +296,8 @@ function delete_order ($order_id, $db_handle) {
     if($deleted_order){
         echo "'" . $_SESSION['order_name'] . "' has been deleted.<br>";
     }
-    
+
+    # Delete the order table itself
     $TBL = "DROP TABLE $order_id";
     $deleted_table = mysql_query($TBL, $db_handle)
     or die ("ERROR: " . mysql_error() . "<br>" . $TBL);
@@ -308,32 +310,32 @@ function delete_order ($order_id, $db_handle) {
 //============================ OTHER HTML BUTTONS ==============================
 
 function choices() {
-# Replace Check Out action when integrate cart
-?>
+	# Replace Check Out action when integrate cart
+	?>
 
-<br><br>
-<div style = "float: left;">
-    <form action="volktage_review_radios.php" method="post">
-        <input type="submit" name="edit" value="Edit">
-    </form>
-    </div>
+	<br><br>
+	<div style = "float: left;">
+    	<form action="volktage_review_radios.php" method="post">
+        	<input type="submit" name="edit" value="Edit">
+    	</form>
+    	</div>
 
-<div style = "float: left;">
-    <form action="????" method="post">
-        <input type="submit" value="Check Out">
-    </form>
-    </div>
-<?php
+	<div style = "float: left;">
+    	<form action="????" method="post">
+        	<input type="submit" value="Check Out">
+    	</form>
+    	</div>
+	<?php
 }
 
 function create_new() {
-?>
+	?>
 
    <a href="volktest_select_components.php">
     <input type="button" value="Create New Order">
    </a>
    
-<?php
+	<?php
 }
 
 
@@ -346,136 +348,91 @@ function sign_out_button() {
           </form>';
 }
 
-function sign_in_and_review() {
+function sign_in_and_review() {	
     ?>
-<head>
-<script type="text/javascript">
-(function() {
-    if (typeof window.janrain !== 'object') window.janrain = {};
-    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+	<head>
+	<script type="text/javascript">
+	(function() {
+    	if (typeof window.janrain !== 'object') window.janrain = {};
+    	if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
     
-    //Set the landing directory here:
-    janrain.settings.tokenUrl = 'http://localhost/volktage_review_order.php';
+    	//Set the landing directory here:
+    	janrain.settings.tokenUrl = 'http://localhost/volktage_review_order.php';
 
-    function isReady() { janrain.ready = true; };
-    if (document.addEventListener) {
-      document.addEventListener("DOMContentLoaded", isReady, false);
-    } else {
-      window.attachEvent('onload', isReady);
-    }
+    	function isReady() { janrain.ready = true; };
+    	if (document.addEventListener) {
+      	document.addEventListener("DOMContentLoaded", isReady, false);
+    	} else {
+      	window.attachEvent('onload', isReady);
+    	}
 
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.id = 'janrainAuthWidget';
+    	var e = document.createElement('script');
+    	e.type = 'text/javascript';
+    	e.id = 'janrainAuthWidget';
 
-    if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/volktage/engage.js';
-    } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/volktage/engage.js';
-    }
+    	if (document.location.protocol === 'https:') {
+      	e.src = 'https://rpxnow.com/js/lib/volktage/engage.js';
+    	} else {
+      	e.src = 'http://widget-cdn.rpxnow.com/js/lib/volktage/engage.js';
+    	}
 
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(e, s);
-})();
-</script>
+    	var s = document.getElementsByTagName('script')[0];
+    	s.parentNode.insertBefore(e, s);
+	})();
+	</script>
 
-</head>
+	</head>
 
-<body>
-    <a class="janrainEngage" href="#"><input type="button" value="Save"></a>
-</body>
+	<body>
+    	<a class="janrainEngage" href="#"><input type="button" value="Save"></a>
+	</body>
 
-</html>
+	</html>
     <?php
 }
 
 function sign_in_from_customizer() {
     ?>
-<head>
-<script type="text/javascript">
-(function() {
-    if (typeof window.janrain !== 'object') window.janrain = {};
-    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+	<head>
+	<script type="text/javascript">
+	(function() {
+    	if (typeof window.janrain !== 'object') window.janrain = {};
+    	if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
     
-    //Set the landing directory here:
-    janrain.settings.tokenUrl = 'http://localhost/volktage_sign_in_landing.php';
+    	//Set the landing directory here:
+    	janrain.settings.tokenUrl = 'http://localhost/volktage_sign_in_landing.php';
 
-    function isReady() { janrain.ready = true; };
-    if (document.addEventListener) {
-      document.addEventListener("DOMContentLoaded", isReady, false);
-    } else {
-      window.attachEvent('onload', isReady);
-    }
+    	function isReady() { janrain.ready = true; };
+    	if (document.addEventListener) {
+      	document.addEventListener("DOMContentLoaded", isReady, false);
+    	} else {
+      	window.attachEvent('onload', isReady);
+    	}
 
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.id = 'janrainAuthWidget';
+    	var e = document.createElement('script');
+    	e.type = 'text/javascript';
+    	e.id = 'janrainAuthWidget';
 
-    if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/volktage/engage.js';
-    } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/volktage/engage.js';
-    }
+    	if (document.location.protocol === 'https:') {
+      	e.src = 'https://rpxnow.com/js/lib/volktage/engage.js';
+    	} else {
+      	e.src = 'http://widget-cdn.rpxnow.com/js/lib/volktage/engage.js';
+    	}
 
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(e, s);
-})();
-</script>
+    	var s = document.getElementsByTagName('script')[0];
+    	s.parentNode.insertBefore(e, s);
+	})();
+	</script>
 
-</head>
+	</head>
 
-<body>
-    <a class="janrainEngage" href="#">
-        <input type="submit" value="Sign-In"><br><br>
-    </a>
-</body>
+	<body>
+    	<a class="janrainEngage" href="#">
+        	<input type="button" value="Sign-In"><br><br>
+    	</a>
+	</body>
 
-</html>
-    <?php
-}
-
-function test_sign_in() {
-    ?>
-<head>
-<script type="text/javascript">
-(function() {
-    if (typeof window.janrain !== 'object') window.janrain = {};
-    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
-    
-    //Set the landing directory here:
-    janrain.settings.tokenUrl = 'http://localhost/volktage_test_landing.php';
-
-    function isReady() { janrain.ready = true; };
-    if (document.addEventListener) {
-      document.addEventListener("DOMContentLoaded", isReady, false);
-    } else {
-      window.attachEvent('onload', isReady);
-    }
-
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.id = 'janrainAuthWidget';
-
-    if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/volktage/engage.js';
-    } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/volktage/engage.js';
-    }
-
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(e, s);
-})();
-</script>
-
-</head>
-
-<body>
-    <a class="janrainEngage" href="#">
-        <input type="button" value="Sign-In"><br><br>
-    </a>
-</body>
-
-</html>
+	</html>
     <?php
 }
 
